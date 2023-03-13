@@ -22,6 +22,7 @@ func main() {
 		log.Fatalf("Some error occured. Err: %s", err)
 	}
 
+	// get envs
 	CERT_PATH := os.Getenv("CERT_PATH")
 	KEY_PATH := os.Getenv("KEY_PATH")
 
