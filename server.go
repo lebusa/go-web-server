@@ -4,21 +4,34 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"sync"
+
+	"github.com/joho/godotenv"
 )
 
 var counter int
 var mutex = &sync.Mutex{}
 
 func main() {
+
+	err := godotenv.Load("local.env")
+
+	if err != nil {
+		log.Fatalf("Some error occured. Err: %s", err)
+	}
+
+	CERT_PATH := os.Getenv("CERT_PATH")
+	KEY_PATH := os.Getenv("KEY_PATH")
+
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 
 	http.HandleFunc("/count", counterHandler)
 
 	http.HandleFunc("/hi", greetingHandler)
 
-	log.Fatal(http.ListenAndServeTLS(":8080", "server.crt", "server.key", nil))
+	log.Fatal(http.ListenAndServeTLS(":8080", CERT_PATH, KEY_PATH, nil))
 }
 
 // handler to request directed to /lumela path
