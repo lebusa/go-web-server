@@ -7,3 +7,6 @@ The server:
 - handles basic response via an **net/http** package's *handleFunc*
 - uses a self-signed TLS certificate
 - uses a mutex to avoid race conditions for requests to one of its routes - */counter*
+
+## License
+MIT © [SirFongFong](https://www.sirfongfong.com)
