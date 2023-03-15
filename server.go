@@ -40,11 +40,6 @@ func greetingHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hi back at you!")
 }
 
-// echo string
-func echo(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "greetings")
-}
-
 // increment counter
 func counterHandler(w http.ResponseWriter, r *http.Request) {
 	mutex.Lock() // lock the counter
